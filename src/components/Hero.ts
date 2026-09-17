@@ -10,8 +10,7 @@ export class Hero {
 
     const dev = portfolioConfig.developer;
 
-    const rawCode = `// Software Developer Profile
-const developer = {
+    const rawCode = `const developer = {
   name: "${dev.name}",
   languages: [
     "C#", "Java", "C++",
@@ -30,7 +29,6 @@ const developer = {
     section.innerHTML = `
       <div class="container-custom">
         <div class="hero-grid">
-          <!-- Left Column (55%) -->
           <div class="hero-content">
             <div class="hero-small-badge">
               <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-success); display: inline-block;"></span>
@@ -92,7 +90,6 @@ const developer = {
             </div>
           </div>
 
-          <!-- Right Column (45%) Interactive Visual -->
           <div class="hero-visual-wrapper">
             <div class="code-window float-animation">
               <div class="code-window-header">
@@ -115,13 +112,11 @@ const developer = {
       </div>
     `;
 
-    // Mount mini terminal
     const terminalSlot = section.querySelector('#hero-terminal-slot');
     if (terminalSlot) {
       terminalSlot.appendChild(Terminal.render());
     }
 
-    // Role rotator animation
     this.initRoleRotator(section, dev.titles);
 
     return section;

@@ -25,9 +25,7 @@ public class InventoryRepository : IInventoryRepository
         _connectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
     }
 
-    /// <summary>
-    /// Atomically transfers stock between two warehouses with strict transaction isolation.
-    /// </summary>
+    // chuyen hang giua 2 kho, dung transaction tranh race condition
     public async Task<bool> TransferStockAsync(Guid productId, int sourceWarehouseId, int targetWarehouseId, int quantity)
     {
         if (quantity <= 0) throw new ArgumentOutOfRangeException(nameof(quantity), "Transfer quantity must be positive.");
@@ -35,7 +33,7 @@ public class InventoryRepository : IInventoryRepository
         await using var connection = new SqlConnection(_connectionString);
         await connection.OpenAsync();
 
-        // Begin transaction with ReadCommitted isolation
+        // mo transaction
         await using var transaction = (SqlTransaction)await connection.BeginTransactionAsync(IsolationLevel.ReadCommitted);
 
         try
@@ -56,7 +54,7 @@ public class InventoryRepository : IInventoryRepository
             int rowsAffected = await deductCmd.ExecuteNonQueryAsync();
             if (rowsAffected == 0)
             {
-                // Insufficient stock or record missing - abort transaction
+                // khong du so luong -> rollback
                 await transaction.RollbackAsync();
                 return false;
             }
@@ -132,7 +130,7 @@ public class BatchIngestionService {
 
             int totalInserted = 0;
             try (Connection conn = dataSource.getConnection()) {
-                conn.setAutoCommit(false); // Enable manual transaction control
+                conn.setAutoCommit(false); // bat transaction
 
                 try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                     int count = 0;
@@ -209,7 +207,7 @@ export class ProjectRepository {
     category?: string
   ): Promise<Result<ProjectRecord[]>> {
     if (!this.client) {
-      // Graceful offline fallback
+      // fallback neu chua co supabase client
       return { success: false, error: new Error('Supabase client uninitialized.') };
     }
 
@@ -266,7 +264,7 @@ final class OrderApiController
     public function __construct(PDO $pdo)
     {
         $this->pdo = $pdo;
-        // Ensure real prepared statements and strict error mode
+        // bat prepared statements
         $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
@@ -336,8 +334,7 @@ final class OrderApiController
       'Window function partitioning calculations without costly subqueries',
       'Optimized index alignment on temporal and foreign key columns'
     ],
-    code: `-- Analytical Query: Identify top performing product categories and growth rate
--- Utilizes CTEs, Window Functions (DENSE_RANK, SUM OVER), and Conditional Aggregates
+    code: `-- thong ke doanh thu theo thang dung CTE va Window Function
 
 WITH MonthlyCategorySales AS (
     SELECT 

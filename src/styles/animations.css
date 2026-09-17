@@ -1,7 +1,3 @@
-/* ==========================================================================
-   Animations & Micro-interactions
-   Respects: prefers-reduced-motion
-   ========================================================================== */
 
 @keyframes blinkCursor {
   0%, 100% { border-color: var(--color-primary); }

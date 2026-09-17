@@ -17,12 +17,9 @@ import { AnalyticsService } from './services/analyticsService';
 class App {
   public static init(): void {
     const appRoot = document.getElementById('app');
-    if (!appRoot) {
-      console.error('Root element #app not found.');
-      return;
-    }
+    if (!appRoot) return;
 
-    // 1. Ambient Background Grid & Glowing Orbs
+    // background hieu ung nhe
     const ambientBg = document.createElement('div');
     ambientBg.className = 'ambient-background';
     ambientBg.innerHTML = `
@@ -33,10 +30,8 @@ class App {
     `;
     document.body.prepend(ambientBg);
 
-    // 2. Initialize Case Study Modal DOM
     CaseStudyModal.init();
 
-    // 3. Assemble Core Portfolio Sections
     appRoot.appendChild(Navbar.render());
 
     const mainContent = document.createElement('main');
@@ -56,15 +51,12 @@ class App {
     appRoot.appendChild(mainContent);
     appRoot.appendChild(Footer.render());
 
-    // 4. Setup Scroll Reveal Animations
     this.setupScrollReveal();
 
-    // 5. Track Initial Page View
     AnalyticsService.trackEvent('page_view', { title: document.title });
   }
 
   private static setupScrollReveal(): void {
-    // Add reveal class to cards and section headers
     const elementsToReveal = document.querySelectorAll(
       '.card-modern, .pillar-card, .skill-category-card, .project-card, .db-card, .workflow-card, .timeline-item, .section-header'
     );
@@ -86,13 +78,11 @@ class App {
 
       elementsToReveal.forEach(el => observer.observe(el));
     } else {
-      // Fallback: immediately show elements if IntersectionObserver unsupported
       elementsToReveal.forEach(el => el.classList.add('is-visible'));
     }
   }
 }
 
-// Bootstrap application on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
   App.init();
 });

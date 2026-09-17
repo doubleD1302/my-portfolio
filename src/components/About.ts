@@ -12,7 +12,6 @@ export class About {
     section.innerHTML = `
       <div class="container-custom">
         <div class="about-grid">
-          <!-- Left Visual Card -->
           <div class="about-visual-card">
             <div class="about-avatar-wrapper" style="overflow: hidden; padding: 0;">
               ${dev.avatarUrl ? `
@@ -39,7 +38,6 @@ export class About {
             </div>
           </div>
 
-          <!-- Right Content Column -->
           <div class="about-content">
             <div class="section-badge">Engineering Background</div>
             <h2 class="section-title">About Me</h2>
@@ -52,7 +50,6 @@ export class About {
               ${dev.extendedBio.map(para => `<p>${para}</p>`).join('')}
             </div>
 
-            <!-- 3 Highlight Pillar Cards -->
             <div class="about-pillar-cards">
               ${pillars.map(p => `
                 <div class="pillar-card">

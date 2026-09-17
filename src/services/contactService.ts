@@ -11,7 +11,7 @@ export class ContactService {
   private static lastSubmissionTime = 0;
 
   public static async submitMessage(payload: ContactMessage): Promise<SubmitResult> {
-    // 1. Anti-spam throttle: prevent rapid-fire submissions (minimum 5s between submissions)
+    // chong spam
     const now = Date.now();
     if (now - this.lastSubmissionTime < 5000) {
       return {
@@ -20,7 +20,7 @@ export class ContactService {
       };
     }
 
-    // 2. Client-side input validation
+    // validate form
     if (!payload.name || payload.name.trim().length < 2) {
       return { success: false, message: 'Please provide a valid name (at least 2 characters).' };
     }
@@ -40,7 +40,7 @@ export class ContactService {
 
     this.lastSubmissionTime = now;
 
-    // 3. Supabase Submission
+    // luu vao supabase
     if (isSupabaseConfigured()) {
       const client = getSupabaseClient();
       if (client) {
@@ -77,8 +77,8 @@ export class ContactService {
       }
     }
 
-    // 4. Graceful Fallback Mode (When Supabase is offline or env keys are empty)
-    await new Promise(resolve => setTimeout(resolve, 600)); // Realistic latency
+    // fallback neu chua co key
+    await new Promise(resolve => setTimeout(resolve, 600));
     console.info('[Contact Form Fallback] Recorded message locally:', payload);
 
     return {

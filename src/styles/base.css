@@ -1,7 +1,3 @@
-/* ==========================================================================
-   Base Styles, Resets, Typography & Accessibility
-   ========================================================================== */
-
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -28,7 +24,7 @@ body {
   transition: background-color var(--transition-base), color var(--transition-base);
 }
 
-/* Custom Scrollbar */
+/* custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -47,7 +43,6 @@ body {
   background: var(--color-primary);
 }
 
-/* Typography Hierarchy */
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-text-primary);
   font-weight: 700;
@@ -83,14 +78,12 @@ code, pre {
   font-size: 0.88rem;
 }
 
-/* Accessibility Focus Ring */
 :focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
   border-radius: var(--radius-xs);
 }
 
-/* Screen Reader Only Utility */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -103,7 +96,6 @@ code, pre {
   border-width: 0;
 }
 
-/* Layout Utilities */
 .container-custom {
   width: 100%;
   max-width: var(--container-max);
@@ -160,7 +152,6 @@ code, pre {
   color: var(--color-text-secondary);
 }
 
-/* Ambient Background Canvas */
 .ambient-background {
   position: fixed;
   inset: 0;

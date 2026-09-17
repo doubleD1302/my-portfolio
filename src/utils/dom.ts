@@ -1,6 +1,3 @@
-/**
- * Helper to escape HTML characters to prevent XSS.
- */
 export function escapeHtml(str: string): string {
   return str
     .replace(/&/g, '&amp;')
@@ -10,23 +7,14 @@ export function escapeHtml(str: string): string {
     .replace(/'/g, '&#039;');
 }
 
-/**
- * Type-safe query selector helper.
- */
 export function qs<T extends HTMLElement>(selector: string, parent: ParentNode = document): T | null {
   return parent.querySelector<T>(selector);
 }
 
-/**
- * Type-safe query selector all helper.
- */
 export function qsa<T extends HTMLElement>(selector: string, parent: ParentNode = document): T[] {
   return Array.from(parent.querySelectorAll<T>(selector));
 }
 
-/**
- * Helper to create an element with classes and attributes.
- */
 export function createElement<K extends keyof HTMLElementTagNameMap>(
   tag: K,
   className?: string,

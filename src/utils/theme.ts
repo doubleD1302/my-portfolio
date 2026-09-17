@@ -21,7 +21,7 @@ class ThemeManager {
 
     this.applyTheme(this.currentTheme);
 
-    // Listen to system preference changes if user hasn't explicitly set preference
+    // doi theo theme he thong neu chua luu
     if (window.matchMedia) {
       window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
         if (!localStorage.getItem(STORAGE_KEY)) {

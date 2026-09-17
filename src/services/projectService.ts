@@ -9,10 +9,7 @@ export interface ProjectFilterOptions {
 }
 
 export class ProjectService {
-  /**
-   * Fetches projects with optional filtering.
-   * Leverages Supabase when available, falling back cleanly to local data.
-   */
+  // lay danh sach projects (uu tien supabase, loi thi dung local)
   public static async getProjects(options: ProjectFilterOptions = {}): Promise<Project[]> {
     let list: Project[] = [];
 
@@ -69,23 +66,21 @@ export class ProjectService {
       list = [...projectsData];
     }
 
-    // Apply Client-Side Filters
+    // loc theo category, tech hoac search
     return this.applyFilters(list, options);
   }
 
-  /**
-   * Filters a list of projects based on category, technology, and search terms.
-   */
+  // filter project
   public static applyFilters(projects: Project[], options: ProjectFilterOptions): Project[] {
     return projects.filter(project => {
-      // Category filter
+      // loc theo category
       if (options.category && options.category !== 'All') {
         if (project.category.toLowerCase() !== options.category.toLowerCase()) {
           return false;
         }
       }
 
-      // Technology filter
+      // loc theo tech
       if (options.technologyId) {
         const matchesTech = project.technologies.some(
           t => t.id.toLowerCase() === options.technologyId?.toLowerCase() ||
@@ -96,7 +91,7 @@ export class ProjectService {
         }
       }
 
-      // Search Query filter
+      // search theo tu khoa
       if (options.searchQuery && options.searchQuery.trim().length > 0) {
         const q = options.searchQuery.toLowerCase().trim();
         const inTitle = project.title.toLowerCase().includes(q);
@@ -113,9 +108,7 @@ export class ProjectService {
     });
   }
 
-  /**
-   * Retrieves single project by slug or ID
-   */
+  // tim project theo slug
   public static getProjectBySlug(slug: string): Project | undefined {
     return projectsData.find(p => p.slug === slug || p.id === slug);
   }

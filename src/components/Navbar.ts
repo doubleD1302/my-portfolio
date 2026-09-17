@@ -81,15 +81,12 @@ export class Navbar {
       </div>
     `;
 
-    // Attach Theme Toggle
     const themeSlot = nav.querySelector('#navbar-theme-container');
     if (themeSlot) {
       themeSlot.appendChild(ThemeToggle.render());
     }
 
-    // Initialize Scroll and Drawer Listeners
     this.setupInteractions(nav);
-
     return nav;
   }
 
@@ -98,7 +95,6 @@ export class Navbar {
     const drawer = nav.querySelector<HTMLElement>('#mobile-drawer');
     const links = nav.querySelectorAll<HTMLAnchorElement>('.nav-item-link, .mobile-nav-link');
 
-    // Scroll state
     window.addEventListener('scroll', () => {
       if (window.scrollY > 20) {
         nav.classList.add('scrolled');
@@ -108,7 +104,6 @@ export class Navbar {
       Navbar.updateScrollSpy();
     });
 
-    // Mobile Drawer Toggle
     if (mobileBtn && drawer) {
       mobileBtn.addEventListener('click', () => {
         const isOpen = drawer.classList.contains('open');
@@ -117,14 +112,12 @@ export class Navbar {
       });
     }
 
-    // Close drawer on link click
     links.forEach(link => {
       link.addEventListener('click', () => {
         if (drawer) drawer.classList.remove('open');
       });
     });
 
-    // Track CV download
     const cvBtn = nav.querySelector('#nav-download-cv');
     cvBtn?.addEventListener('click', () => {
       AnalyticsService.trackEvent('cv_download_clicked', { source: 'navbar' });

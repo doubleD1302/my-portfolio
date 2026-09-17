@@ -1,7 +1,6 @@
 import { escapeHtml } from './dom';
 
 export function highlightCode(code: string, language: string): string {
-  // First escape all HTML entities
   const safe = escapeHtml(code);
 
   const keywordsMap: Record<string, string[]> = {
@@ -39,11 +38,9 @@ export function highlightCode(code: string, language: string): string {
   };
 
   const keywords = keywordsMap[language] || keywordsMap.typescript;
-
-  // Split lines to safely handle comments and strings
   const lines = safe.split('\n');
+
   const processedLines = lines.map(line => {
-    // 1. Comments: single line
     let commentIdx = -1;
     if (language === 'sql') {
       commentIdx = line.indexOf('--');
@@ -64,17 +61,13 @@ export function highlightCode(code: string, language: string): string {
 }
 
 function highlightCodeTokens(text: string, keywords: string[]): string {
-  // Match strings: "..." or '...' or `...`
   let res = text.replace(/(["'`])(?:(?=(\\?))\2.)*?\1/g, match => {
     return `<span class="token-string">${match}</span>`;
   });
 
-  // Highlight numbers (outside tags)
   res = res.replace(/\b(\d+(\.\d+)?)\b(?![^<]*>)/g, '<span class="token-number">$1</span>');
 
-  // Highlight keywords
   keywords.forEach(kw => {
-    // Look for exact word boundary, not inside an HTML tag
     const regex = new RegExp(`\\b(${kw})\\b(?![^<]*>)`, 'g');
     res = res.replace(regex, '<span class="token-keyword">$1</span>');
   });
