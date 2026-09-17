@@ -58,7 +58,18 @@ class ThemeManager {
     };
   }
 
+  private transitionTimer: number | null = null;
+
   private applyTheme(theme: Theme): void {
+    // Add smooth transition class temporarily
+    document.documentElement.classList.add('theme-transitioning');
+    if (this.transitionTimer) {
+      window.clearTimeout(this.transitionTimer);
+    }
+    this.transitionTimer = window.setTimeout(() => {
+      document.documentElement.classList.remove('theme-transitioning');
+    }, 450);
+
     document.documentElement.setAttribute('data-theme', theme);
     if (theme === 'dark') {
       document.documentElement.classList.add('dark-mode');

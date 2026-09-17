@@ -1,6 +1,3 @@
-/* Import Bootstrap Grid & Utilities for responsive foundation */
-@import 'bootstrap/dist/css/bootstrap-grid.min.css';
-
 /* Import Custom Design System */
 @import './variables.css';
 @import './base.css';

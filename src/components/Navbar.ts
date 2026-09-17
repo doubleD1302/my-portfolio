@@ -62,12 +62,42 @@ export class Navbar {
       <!-- Mobile Navigation Drawer -->
       <div class="mobile-drawer" id="mobile-drawer">
         <ul class="mobile-drawer-links">
-          <li><a href="#home" class="mobile-nav-link active" data-section="home">Home</a></li>
-          <li><a href="#about" class="mobile-nav-link" data-section="about">About</a></li>
-          <li><a href="#skills" class="mobile-nav-link" data-section="skills">Skills</a></li>
-          <li><a href="#projects" class="mobile-nav-link" data-section="projects">Projects</a></li>
-          <li><a href="#experience" class="mobile-nav-link" data-section="experience">Journey</a></li>
-          <li><a href="#contact" class="mobile-nav-link" data-section="contact">Contact</a></li>
+          <li>
+            <a href="#home" class="mobile-nav-link active" data-section="home">
+              <span>Home</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#about" class="mobile-nav-link" data-section="about">
+              <span>About</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#skills" class="mobile-nav-link" data-section="skills">
+              <span>Skills</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#projects" class="mobile-nav-link" data-section="projects">
+              <span>Projects</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#experience" class="mobile-nav-link" data-section="experience">
+              <span>Journey</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#contact" class="mobile-nav-link" data-section="contact">
+              <span>Contact</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+          </li>
         </ul>
         <div class="mobile-drawer-actions">
           <a href="${dev.resumeUrl}" download="CV_Nguyen_Duc_Dat.pdf" class="btn btn-primary" style="width: 100%; justify-content: center;">
@@ -104,6 +134,33 @@ export class Navbar {
     const drawer = nav.querySelector<HTMLElement>('#mobile-drawer');
     const links = nav.querySelectorAll<HTMLAnchorElement>('.nav-item-link, .mobile-nav-link');
 
+    const hamburgerIcon = `
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    `;
+
+    const closeIcon = `
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    `;
+
+    const closeDrawer = () => {
+      if (drawer && drawer.classList.contains('open')) {
+        drawer.classList.remove('open');
+        if (mobileBtn) {
+          mobileBtn.setAttribute('aria-expanded', 'false');
+          mobileBtn.innerHTML = hamburgerIcon;
+        }
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+      }
+    };
+
     window.addEventListener('scroll', () => {
       if (window.scrollY > 20) {
         nav.classList.add('scrolled');
@@ -115,26 +172,27 @@ export class Navbar {
 
     if (mobileBtn && drawer) {
       mobileBtn.addEventListener('click', () => {
-        const isOpen = drawer.classList.contains('open');
-        drawer.classList.toggle('open', !isOpen);
-        mobileBtn.setAttribute('aria-expanded', String(!isOpen));
+        const willOpen = !drawer.classList.contains('open');
+        drawer.classList.toggle('open', willOpen);
+        mobileBtn.setAttribute('aria-expanded', String(willOpen));
+        mobileBtn.innerHTML = willOpen ? closeIcon : hamburgerIcon;
+
+        if (willOpen) {
+          document.body.style.overflow = 'hidden';
+          document.documentElement.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = '';
+          document.documentElement.style.overflow = '';
+        }
       });
     }
 
     links.forEach(link => {
-      link.addEventListener('click', () => {
-        if (drawer) {
-          drawer.classList.remove('open');
-          mobileBtn?.setAttribute('aria-expanded', 'false');
-        }
-      });
+      link.addEventListener('click', closeDrawer);
     });
 
     drawer?.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        drawer.classList.remove('open');
-        mobileBtn?.setAttribute('aria-expanded', 'false');
-      });
+      a.addEventListener('click', closeDrawer);
     });
 
     const cvBtn = nav.querySelector('#nav-download-cv');
