@@ -2,7 +2,7 @@ import { PortfolioConfig } from '../types';
 
 export const portfolioConfig: PortfolioConfig = {
   developer: {
-    name: "[YOUR NAME]",
+    name: "Nguyễn Đức Đạt",
     titles: [
       "Software Developer",
       "Full-stack Developer",
@@ -17,11 +17,12 @@ export const portfolioConfig: PortfolioConfig = {
       "My approach balances practical software engineering principles with deep respect for database correctness: clean data access layers (ADO.NET, PDO, Supabase REST), normalized schemas, and structured error boundaries.",
       "Whether developing Windows desktop utilities in C# WinForms, building performant web APIs in PHP/TypeScript, or processing data pipelines in Java and C++, I prioritize maintainability, reliability, and engineering rigor."
     ],
-    email: "contact@[YOUR_DOMAIN].com",
-    github: "https://github.com/[YOUR_GITHUB]",
-    linkedin: "https://linkedin.com/in/[YOUR_LINKEDIN]",
+    email: "contact@nguyenducdat.dev",
+    github: "https://github.com/doubleD1302",
+    linkedin: "https://linkedin.com/in/nguyenducdat",
     location: "Vietnam / Open to Remote & On-site",
-    resumeUrl: "/cv.pdf"
+    resumeUrl: "/cv.pdf",
+    avatarUrl: "/images/avatar.jpg"
   },
   metrics: {
     projectsBuilt: "6+",

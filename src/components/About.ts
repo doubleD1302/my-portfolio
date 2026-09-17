@@ -14,14 +14,18 @@ export class About {
         <div class="about-grid">
           <!-- Left Visual Card -->
           <div class="about-visual-card">
-            <div class="about-avatar-wrapper">
-              <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                <line x1="8" y1="21" x2="16" y2="21"></line>
-                <line x1="12" y1="17" x2="12" y2="21"></line>
-                <path d="M7 8l3 3-3 3"></path>
-                <line x1="13" y1="14" x2="17" y2="14"></line>
-              </svg>
+            <div class="about-avatar-wrapper" style="overflow: hidden; padding: 0;">
+              ${dev.avatarUrl ? `
+                <img src="${dev.avatarUrl}" alt="${dev.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" />
+              ` : `
+                <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                  <path d="M7 8l3 3-3 3"></path>
+                  <line x1="13" y1="14" x2="17" y2="14"></line>
+                </svg>
+              `}
             </div>
             <h3 style="font-size: 1.35rem; margin-bottom: 0.5rem;">${dev.name}</h3>
             <p style="font-size: 0.95rem; color: var(--color-primary); font-weight: 600; margin-bottom: 1rem;">
