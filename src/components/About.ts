@@ -31,10 +31,10 @@ export class About {
               ${dev.headline}
             </p>
             <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
-              <span class="badge" style="background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 4px; font-size: 0.78rem; font-family: var(--font-mono);">React</span>
-              <span class="badge" style="background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 4px; font-size: 0.78rem; font-family: var(--font-mono);">TypeScript</span>
-              <span class="badge" style="background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 4px; font-size: 0.78rem; font-family: var(--font-mono);">PHP / MySQL</span>
-              <span class="badge" style="background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 4px; font-size: 0.78rem; font-family: var(--font-mono);">Node.js / Mongo</span>
+              <span class="badge" style="background: var(--color-bg-tertiary); border: 1px solid var(--color-border-subtle); color: var(--color-text-secondary); padding: 4px 10px; border-radius: 4px; font-size: 0.78rem; font-family: var(--font-mono);">React</span>
+              <span class="badge" style="background: var(--color-bg-tertiary); border: 1px solid var(--color-border-subtle); color: var(--color-text-secondary); padding: 4px 10px; border-radius: 4px; font-size: 0.78rem; font-family: var(--font-mono);">TypeScript</span>
+              <span class="badge" style="background: var(--color-bg-tertiary); border: 1px solid var(--color-border-subtle); color: var(--color-text-secondary); padding: 4px 10px; border-radius: 4px; font-size: 0.78rem; font-family: var(--font-mono);">PHP / MySQL</span>
+              <span class="badge" style="background: var(--color-bg-tertiary); border: 1px solid var(--color-border-subtle); color: var(--color-text-secondary); padding: 4px 10px; border-radius: 4px; font-size: 0.78rem; font-family: var(--font-mono);">Node.js / Mongo</span>
             </div>
           </div>
 

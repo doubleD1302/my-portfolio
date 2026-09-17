@@ -61,16 +61,36 @@ export function highlightCode(code: string, language: string): string {
 }
 
 function highlightCodeTokens(text: string, keywords: string[]): string {
-  let res = text.replace(/(["'`])(?:(?=(\\?))\2.)*?\1/g, match => {
-    return `<span class="token-string">${match}</span>`;
+  const strings: string[] = [];
+
+  // 1. Extract strings (handles HTML-escaped quotes &quot; and &#039; as well as raw backticks `)
+  let res = text.replace(/(&quot;[\s\S]*?&quot;|&#039;[\s\S]*?&#039;|`[\s\S]*?`)/g, match => {
+    const placeholder = `___STR_TOKEN_${strings.length}___`;
+    strings.push(`<span class="token-string">${match}</span>`);
+    return placeholder;
   });
 
+  // 2. Object keys / property names before colon: e.g. name:
+  res = res.replace(/(^|[{,\s])([a-zA-Z_$][a-zA-Z0-9_$]*)(?=\s*:)/g, '$1<span class="token-property">$2</span>');
+
+  // 3. Function calls: e.g. functionName(...)
+  res = res.replace(/\b([a-zA-Z_$][a-zA-Z0-9_$]*)(?=\s*\()(?![^<]*>)/g, match => {
+    if (keywords.includes(match)) return match;
+    return `<span class="token-function">${match}</span>`;
+  });
+
+  // 4. Numbers
   res = res.replace(/\b(\d+(\.\d+)?)\b(?![^<]*>)/g, '<span class="token-number">$1</span>');
 
+  // 5. Keywords
   keywords.forEach(kw => {
     const regex = new RegExp(`\\b(${kw})\\b(?![^<]*>)`, 'g');
     res = res.replace(regex, '<span class="token-keyword">$1</span>');
   });
 
+  // 6. Restore strings from placeholders
+  res = res.replace(/___STR_TOKEN_(\d+)___/g, (_, idx) => strings[parseInt(idx, 10)]);
+
   return res;
 }
+

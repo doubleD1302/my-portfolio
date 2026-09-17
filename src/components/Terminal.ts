@@ -5,18 +5,18 @@ export class Terminal {
     el.id = 'hero-terminal';
 
     el.innerHTML = `
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; border-bottom: 1px solid var(--color-border-subtle); padding-bottom: 0.5rem;">
-        <span style="color: var(--color-text-muted); font-size: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+      <div class="terminal-header">
+        <span class="terminal-header-title">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="4 17 10 11 4 5"></polyline>
             <line x1="12" y1="19" x2="20" y2="19"></line>
           </svg>
           bash — terminal
         </span>
-        <div style="display: flex; gap: 0.35rem;">
-          <button class="terminal-cmd-pill" data-cmd="whoami" style="background: rgba(255,255,255,0.05); border: 1px solid var(--color-border-subtle); border-radius: 4px; padding: 2px 8px; font-size: 0.72rem; color: var(--color-text-secondary); cursor: pointer;">whoami</button>
-          <button class="terminal-cmd-pill" data-cmd="database" style="background: rgba(255,255,255,0.05); border: 1px solid var(--color-border-subtle); border-radius: 4px; padding: 2px 8px; font-size: 0.72rem; color: var(--color-text-secondary); cursor: pointer;">--database</button>
-          <button class="terminal-cmd-pill" data-cmd="languages" style="background: rgba(255,255,255,0.05); border: 1px solid var(--color-border-subtle); border-radius: 4px; padding: 2px 8px; font-size: 0.72rem; color: var(--color-text-secondary); cursor: pointer;">--languages</button>
+        <div class="terminal-header-pills">
+          <button class="terminal-cmd-pill" data-cmd="whoami">whoami</button>
+          <button class="terminal-cmd-pill" data-cmd="database">--database</button>
+          <button class="terminal-cmd-pill" data-cmd="languages">--languages</button>
         </div>
       </div>
       <div id="terminal-content">
@@ -24,19 +24,19 @@ export class Terminal {
           <span class="terminal-prompt">$</span>
           <span class="terminal-cmd">whoami</span>
         </div>
-        <div class="terminal-response">Software Developer / Full-stack Developer</div>
+        <div class="terminal-response">Software Engineering Student / Full-stack Developer Intern</div>
 
         <div class="terminal-line">
           <span class="terminal-prompt">$</span>
           <span class="terminal-cmd">skills --database</span>
         </div>
-        <div class="terminal-response">SQL Server  •  MySQL  •  TiDB Cloud  •  Supabase  •  Firebase</div>
+        <div class="terminal-response">PostgreSQL (Supabase)  •  MySQL  •  MongoDB  •  SQL Server</div>
 
         <div class="terminal-line">
           <span class="terminal-prompt">$</span>
           <span class="terminal-cmd">skills --languages</span>
         </div>
-        <div class="terminal-response">C#  •  Java  •  C++  •  TypeScript  •  PHP  •  SQL</div>
+        <div class="terminal-response">TypeScript  •  JavaScript  •  PHP  •  C#  •  Java  •  C/C++  •  SQL</div>
       </div>
     `;
 
@@ -54,13 +54,13 @@ export class Terminal {
 
         if (cmd === 'whoami') {
           cmdText = 'whoami';
-          respText = 'Software Developer / Full-stack Developer (Ready to build practical products)';
+          respText = 'Software Engineering Student / Full-stack Developer Intern (Available for 2025/2026 roles)';
         } else if (cmd === 'database') {
           cmdText = 'skills --database';
-          respText = 'SQL Server (ADO.NET)  •  MySQL (InnoDB/PDO)  •  TiDB Cloud (Distributed SQL)  •  Supabase (PostgreSQL/RLS)';
+          respText = 'PostgreSQL / Supabase (RLS & Edge)  •  MySQL (InnoDB & PDO)  •  MongoDB  •  SQL Server';
         } else if (cmd === 'languages') {
           cmdText = 'skills --languages';
-          respText = 'C# (.NET)  •  Java (Core/JDBC)  •  C++ (Systems)  •  TypeScript (Strict)  •  PHP (PDO)  •  SQL';
+          respText = 'TypeScript (Strict)  •  JavaScript (ES6+)  •  PHP 8.2  •  C# (.NET)  •  Java  •  C/C++  •  SQL';
         }
 
         const newBlock = document.createElement('div');
@@ -69,7 +69,7 @@ export class Terminal {
             <span class="terminal-prompt">$</span>
             <span class="terminal-cmd">${cmdText}</span>
           </div>
-          <div class="terminal-response" style="color: var(--color-primary);">${respText}</div>
+          <div class="terminal-response" style="color: #38bdf8;">${respText}</div>
         `;
         content.appendChild(newBlock);
         content.scrollTop = content.scrollHeight;
