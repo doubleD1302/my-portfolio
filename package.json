@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:cv": "powershell -ExecutionPolicy Bypass -File ./scripts/build-cv.ps1",
     "preview": "vite preview"
   },
   "dependencies": {

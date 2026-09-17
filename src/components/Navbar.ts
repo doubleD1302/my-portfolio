@@ -44,7 +44,7 @@ export class Navbar {
             </svg>
           </a>
 
-          <a href="${dev.resumeUrl}" download class="btn btn-outline btn-sm" id="nav-download-cv" aria-label="Download CV">
+          <a href="${dev.resumeUrl}" download="CV_Nguyen_Duc_Dat_Software_Developer.pdf" class="btn btn-outline btn-sm" id="nav-download-cv" aria-label="Download CV">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
               <polyline points="7 10 12 15 17 10"></polyline>
@@ -76,7 +76,7 @@ export class Navbar {
           <li><a href="#contact" class="mobile-nav-link" data-section="contact">Contact</a></li>
         </ul>
         <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-direction: column;">
-          <a href="${dev.resumeUrl}" download class="btn btn-primary" style="width: 100%;">Download CV</a>
+          <a href="${dev.resumeUrl}" download="CV_Nguyen_Duc_Dat_Software_Developer.pdf" class="btn btn-primary" style="width: 100%;">Download CV</a>
         </div>
       </div>
     `;
