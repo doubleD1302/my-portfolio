@@ -1,0 +1,165 @@
+/* ==========================================================================
+   Design System Variables & Theme Tokens
+   Inspired by: Linear, Vercel, Raycast, GitHub Developer pages
+   ========================================================================== */
+
+:root {
+  /* Fonts */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Menlo, Monaco, Consolas, 'Courier New', monospace;
+
+  /* Spacing Scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4.5rem;
+  --space-4xl: 6rem;
+
+  /* Border Radius */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms var(--ease-spring);
+  --transition-slow: 400ms var(--ease-spring);
+
+  /* Container */
+  --container-max: 1240px;
+  --navbar-height: 72px;
+}
+
+/* ==========================================================================
+   Dark Theme (Default)
+   ========================================================================== */
+:root,
+[data-theme="dark"],
+.dark-mode {
+  --color-bg-primary: #07090e;
+  --color-bg-secondary: #0d111a;
+  --color-bg-tertiary: #131926;
+  --color-bg-card: rgba(16, 22, 34, 0.75);
+  --color-bg-card-hover: rgba(23, 32, 50, 0.85);
+  --color-bg-surface: #101624;
+  --color-bg-elevated: #161e2e;
+
+  /* Borders */
+  --color-border-subtle: rgba(255, 255, 255, 0.07);
+  --color-border-medium: rgba(255, 255, 255, 0.14);
+  --color-border-active: rgba(6, 182, 212, 0.5);
+
+  /* Typography */
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+  --color-text-inverted: #090d16;
+
+  /* Brand & Accents */
+  --color-primary: #06b6d4;          /* Cyan */
+  --color-primary-rgb: 6, 182, 212;
+  --color-primary-hover: #22d3ee;
+  --color-secondary: #3b82f6;        /* Electric Blue */
+  --color-secondary-rgb: 59, 130, 246;
+  --color-accent: #8b5cf6;           /* Subtle Purple */
+  --color-accent-rgb: 139, 92, 246;
+
+  /* Semantic Feedback */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #06b6d4;
+
+  /* Glow & Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 12px 0 rgba(0, 0, 0, 0.6), 0 0 1px 1px var(--color-border-subtle);
+  --shadow-lg: 0 12px 28px -4px rgba(0, 0, 0, 0.7), 0 0 1px 1px var(--color-border-subtle);
+  --glow-primary: 0 0 28px rgba(6, 182, 212, 0.22);
+  --glow-secondary: 0 0 35px rgba(59, 130, 246, 0.18);
+  --glow-accent: 0 0 30px rgba(139, 92, 246, 0.18);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(13, 17, 26, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: blur(14px);
+
+  /* Code Syntax Highlighting */
+  --code-bg: #090d16;
+  --code-text: #e2e8f0;
+  --code-keyword: #ff79c6;
+  --code-string: #f1fa8c;
+  --code-number: #bd93f9;
+  --code-comment: #6272a4;
+  --code-function: #50fa7b;
+  --code-type: #8be9fd;
+}
+
+/* ==========================================================================
+   Light Theme
+   ========================================================================== */
+[data-theme="light"],
+.light-mode {
+  --color-bg-primary: #f8fafc;
+  --color-bg-secondary: #ffffff;
+  --color-bg-tertiary: #f1f5f9;
+  --color-bg-card: rgba(255, 255, 255, 0.85);
+  --color-bg-card-hover: #ffffff;
+  --color-bg-surface: #ffffff;
+  --color-bg-elevated: #e2e8f0;
+
+  /* Borders */
+  --color-border-subtle: rgba(0, 0, 0, 0.08);
+  --color-border-medium: rgba(0, 0, 0, 0.15);
+  --color-border-active: rgba(2, 132, 199, 0.6);
+
+  /* Typography */
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748b;
+  --color-text-inverted: #f8fafc;
+
+  /* Brand & Accents */
+  --color-primary: #0284c7;          /* Sky Deep Blue */
+  --color-primary-rgb: 2, 132, 199;
+  --color-primary-hover: #0369a1;
+  --color-secondary: #2563eb;
+  --color-secondary-rgb: 37, 99, 235;
+  --color-accent: #7c3aed;
+  --color-accent-rgb: 124, 58, 237;
+
+  /* Semantic Feedback */
+  --color-success: #059669;
+  --color-warning: #d97706;
+  --color-error: #dc2626;
+  --color-info: #0284c7;
+
+  /* Glow & Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06), 0 0 1px 1px var(--color-border-subtle);
+  --shadow-lg: 0 12px 28px -4px rgba(0, 0, 0, 0.1), 0 0 1px 1px var(--color-border-subtle);
+  --glow-primary: 0 0 20px rgba(2, 132, 199, 0.12);
+  --glow-secondary: 0 0 25px rgba(37, 99, 235, 0.1);
+  --glow-accent: 0 0 20px rgba(124, 58, 237, 0.1);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.88);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-blur: blur(14px);
+
+  /* Code Syntax Highlighting */
+  --code-bg: #0f172a;
+  --code-text: #f8fafc;
+  --code-keyword: #f472b6;
+  --code-string: #fde047;
+  --code-number: #c084fc;
+  --code-comment: #94a3b8;
+  --code-function: #4ade80;
+  --code-type: #38bdf8;
+}
