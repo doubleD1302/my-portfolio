@@ -18,7 +18,7 @@ export class Navbar {
             <li><a href="#about" class="nav-item-link" data-section="about">About</a></li>
             <li><a href="#skills" class="nav-item-link" data-section="skills">Skills</a></li>
             <li><a href="#projects" class="nav-item-link" data-section="projects">Projects</a></li>
-            <li><a href="#experience" class="nav-item-link" data-section="experience">Experience</a></li>
+            <li><a href="#experience" class="nav-item-link" data-section="experience">Journey</a></li>
             <li><a href="#contact" class="nav-item-link" data-section="contact">Contact</a></li>
           </ul>
         </nav>
@@ -66,7 +66,7 @@ export class Navbar {
           <li><a href="#about" class="mobile-nav-link" data-section="about">About</a></li>
           <li><a href="#skills" class="mobile-nav-link" data-section="skills">Skills</a></li>
           <li><a href="#projects" class="mobile-nav-link" data-section="projects">Projects</a></li>
-          <li><a href="#experience" class="mobile-nav-link" data-section="experience">Experience</a></li>
+          <li><a href="#experience" class="mobile-nav-link" data-section="experience">Journey</a></li>
           <li><a href="#contact" class="mobile-nav-link" data-section="contact">Contact</a></li>
         </ul>
         <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-direction: column;">

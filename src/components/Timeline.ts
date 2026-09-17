@@ -9,10 +9,10 @@ export class Timeline {
     section.innerHTML = `
       <div class="container-custom">
         <div class="section-header">
-          <div class="section-badge">Career Journey</div>
-          <h2 class="section-title">Experience & Education</h2>
+          <div class="section-badge">Development Journey</div>
+          <h2 class="section-title">Development Journey</h2>
           <p class="section-subtitle">
-            Academic grounding combined with hands-on software development, database engineering, and practical application building.
+            Practical application engineering combined with an academic foundation in Software Engineering.
           </p>
         </div>
 
