@@ -21,8 +21,8 @@ export class TechArchitecture {
             <h4 class="arch-node-title">Presentation & UI</h4>
           </div>
           <div class="arch-node-techs">
-            <strong>HTML5 • CSS3 • TypeScript</strong><br>
-            Bootstrap 5 • WinForms UI
+            <strong>React 19 • TypeScript • Tailwind CSS</strong><br>
+            HTML5 / CSS3 • Bootstrap 5
           </div>
           <div class="arch-node-arrow">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -36,11 +36,11 @@ export class TechArchitecture {
         <div class="arch-node">
           <div>
             <div class="arch-node-badge">Layer 02</div>
-            <h4 class="arch-node-title">Business Logic (BLL)</h4>
+            <h4 class="arch-node-title">Backend & Logic</h4>
           </div>
           <div class="arch-node-techs">
-            <strong>C# (.NET) • Java • PHP</strong><br>
-            C++ (Algorithms/Systems)
+            <strong>PHP 8.2 (MVC) • Node.js • Express.js</strong><br>
+            C# (.NET) • Java • C++
           </div>
           <div class="arch-node-arrow">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -57,8 +57,8 @@ export class TechArchitecture {
             <h4 class="arch-node-title">Data Access (DAL)</h4>
           </div>
           <div class="arch-node-techs">
-            <strong>ADO.NET • PDO Prepared</strong><br>
-            JDBC Batching • PostgREST
+            <strong>Supabase JS • PDO Prepared</strong><br>
+            Mongoose ODM • IndexedDB Cache
           </div>
           <div class="arch-node-arrow">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -72,11 +72,11 @@ export class TechArchitecture {
         <div class="arch-node">
           <div>
             <div class="arch-node-badge">Layer 04</div>
-            <h4 class="arch-node-title">Database Persistence</h4>
+            <h4 class="arch-node-title">Database Storage</h4>
           </div>
           <div class="arch-node-techs">
-            <strong>SQL Server • MySQL</strong><br>
-            TiDB Cloud (Distributed SQL)
+            <strong>PostgreSQL • MySQL • MongoDB</strong><br>
+            SQL Server (ACID & Stored Procs)
           </div>
           <div class="arch-node-arrow">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -86,15 +86,15 @@ export class TechArchitecture {
           </div>
         </div>
 
-        <!-- 5. Cloud Services -->
+        <!-- 5. Cloud Services & DevOps -->
         <div class="arch-node">
           <div>
             <div class="arch-node-badge">Layer 05</div>
-            <h4 class="arch-node-title">Cloud & Realtime</h4>
+            <h4 class="arch-node-title">DevOps & Services</h4>
           </div>
           <div class="arch-node-techs">
-            <strong>Supabase (PostgreSQL/RLS)</strong><br>
-            Firebase (Firestore/Auth)
+            <strong>VietQR Dynamic • Docker • Linux</strong><br>
+            Apache • Vercel • Render
           </div>
         </div>
       </div>

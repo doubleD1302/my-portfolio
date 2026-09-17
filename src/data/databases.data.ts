@@ -66,19 +66,19 @@ export const databaseCapabilities: DatabaseCapability[] = [
     icon: 'supabase'
   },
   {
-    id: 'firebase',
-    name: 'Firebase (Firestore)',
-    subtitle: 'Cloud NoSQL Document Database & Realtime Sync',
-    description: 'Experience integrating Firebase Cloud Firestore for real-time collaboration, document-based schemas, and client-side offline persistence.',
+    id: 'mongodb',
+    name: 'MongoDB / Mongoose',
+    subtitle: 'High-Performance Document Store & Aggregation Pipeline',
+    description: 'Applied in F&B and Point-of-Sale systems (NoCoffe). Specializes in document modeling for complex menus, ingredient recipes, and resilient offline synchronization.',
     capabilities: [
-      'Flexible NoSQL document and collection hierarchies',
-      'Low-latency snapshot listeners (onSnapshot) for live multi-user sync',
-      'Declarative Firestore security rules for role-based document access',
-      'Built-in offline persistence and optimistic client mutations',
-      'Seamless integration with Firebase Authentication tokens'
+      'Document schema design with embedded subdocuments & references',
+      'Mongoose ODM schema validation, pre/post middleware hooks',
+      'Aggregation pipelines for daily shift revenue & inventory shrinkage reports',
+      'Indexed queries for sub-millisecond cashier order processing',
+      'Sync reconciliation strategies with client IndexedDB/LocalStorage'
     ],
-    architectureRole: 'Rapid real-time synchronization backend for collaborative canvases, notifications, and event-driven mobile/web apps.',
-    badge: 'Cloud NoSQL',
-    icon: 'firebase'
+    architectureRole: 'Primary NoSQL engine for high-velocity transactional catalogs, rapid schema evolution, and offline-first web clients.',
+    badge: 'Document NoSQL',
+    icon: 'mongodb'
   }
 ];

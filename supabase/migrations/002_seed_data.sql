@@ -1,144 +1,109 @@
--- them danh sach technologies
+-- Migration 002: Seed Data for Portfolio
+-- Real Projects: POS-GA, ShopTheThao, NoCoffe
+
+-- 1. Insert/Update Technologies
 INSERT INTO public.technologies (id, name, category, icon) VALUES
-    ('csharp', 'C#', 'languages', 'csharp'),
-    ('java', 'Java', 'languages', 'java'),
-    ('cpp', 'C++', 'languages', 'cpp'),
+    ('react', 'React 19', 'web', 'react'),
     ('typescript', 'TypeScript', 'languages', 'typescript'),
     ('javascript', 'JavaScript', 'languages', 'javascript'),
-    ('php', 'PHP', 'languages', 'php'),
-    ('sql', 'SQL', 'languages', 'sql'),
-    ('html5', 'HTML5', 'web', 'html5'),
-    ('css3', 'CSS3', 'web', 'css3'),
+    ('tailwind', 'Tailwind CSS', 'web', 'tailwind'),
     ('bootstrap', 'Bootstrap 5', 'web', 'bootstrap'),
-    ('winforms', 'C# WinForms', 'dotnet', 'windows'),
-    ('adonet', 'ADO.NET', 'dotnet', 'database'),
+    ('php', 'PHP 8.2', 'languages', 'php'),
+    ('nodejs', 'Node.js', 'backend', 'nodejs'),
+    ('express', 'Express.js', 'backend', 'express'),
+    ('docker', 'Docker', 'backend', 'docker'),
+    ('supabase', 'Supabase / PostgreSQL', 'databases', 'supabase'),
+    ('mysql', 'MySQL / PDO', 'databases', 'mysql'),
+    ('mongodb', 'MongoDB / Mongoose', 'databases', 'mongodb'),
     ('sqlserver', 'SQL Server', 'databases', 'sqlserver'),
-    ('mysql', 'MySQL', 'databases', 'mysql'),
-    ('tidb', 'TiDB Cloud', 'databases', 'tidb'),
-    ('supabase', 'Supabase', 'databases', 'supabase'),
-    ('firebase', 'Firebase', 'backend', 'firebase')
+    ('csharp', 'C#', 'languages', 'csharp'),
+    ('winforms', 'C# WinForms', 'dotnet', 'windows'),
+    ('adonet', 'ADO.NET', 'dotnet', 'database')
 ON CONFLICT (id) DO UPDATE SET 
     name = EXCLUDED.name,
     category = EXCLUDED.category,
     icon = EXCLUDED.icon;
 
--- them danh sach projects
+-- 2. Clear previous demo projects and insert 3 real projects
+DELETE FROM public.project_technologies WHERE project_id IN (
+    '11111111-1111-1111-1111-111111111111',
+    '22222222-2222-2222-2222-222222222222',
+    '33333333-3333-3333-3333-333333333333',
+    '44444444-4444-4444-4444-444444444444',
+    '55555555-5555-5555-5555-555555555555',
+    '66666666-6666-6666-6666-666666666666'
+);
+
+DELETE FROM public.projects WHERE id IN (
+    '11111111-1111-1111-1111-111111111111',
+    '22222222-2222-2222-2222-222222222222',
+    '33333333-3333-3333-3333-333333333333',
+    '44444444-4444-4444-4444-444444444444',
+    '55555555-5555-5555-5555-555555555555',
+    '66666666-6666-6666-6666-666666666666'
+);
+
 INSERT INTO public.projects (id, slug, title, description, long_description, category, thumbnail, github_url, demo_url, featured, display_order) VALUES
 (
-    '11111111-1111-1111-1111-111111111111',
-    'enterprise-management-system',
-    'Enterprise Resource & Inventory Management System',
-    'Multi-tier desktop management application designed with layered architecture, strong transaction integrity, and relational data access.',
-    'A robust enterprise desktop application engineered with C# WinForms and ADO.NET, interacting directly with Microsoft SQL Server. Implements a strict 3-tier architecture (Presentation Layer -> Business Logic Layer -> Data Access Layer) with stored procedures, parameter-driven commands, and ACID-compliant transaction boundaries to prevent deadlock and race conditions.',
-    'Desktop',
-    '/assets/projects/project-winforms.svg',
-    'https://github.com/doubleD1302/enterprise-management-system',
+    'a1111111-1111-1111-1111-111111111111',
+    'pos-ga',
+    'POS-GA - POS Kinh Doanh Gà Thịt',
+    'Xây dựng end-to-end POS phục vụ mô hình kinh doanh gà thịt: tính tiền theo kg/số con, ghi nợ, VietQR động, quản lý đàn gà và đối tác.',
+    'Hệ thống Point of Sale (POS) toàn diện phục vụ kinh doanh gia cầm. Dự án độc lập phụ trách trọn gói từ thiết kế giao diện, logic nghiệp vụ đến thiết kế schema Supabase/PostgreSQL và tích hợp thanh toán VietQR động, dashboard theo dõi doanh thu - lợi nhuận - chi phí.',
+    'Web',
+    '/assets/projects/project-supabase.svg',
+    'https://github.com/doubleD1302/POS-GA',
     NULL,
     TRUE,
     1
 ),
 (
-    '22222222-2222-2222-2222-222222222222',
-    'fullstack-ecommerce-platform',
-    'High-Performance Modular E-Commerce Platform',
-    'Full-stack dynamic web portal featuring a clean PHP backend, MySQL relational modeling, responsive Bootstrap frontend, and TypeScript interactions.',
-    'A modular web application separating view orchestration from backend REST endpoints. The PHP backend utilizes PDO with strictly prepared statements for SQL injection immunity. The data model in MySQL is normalized to 3NF with cascading constraints and indexing on foreign keys. The frontend combines semantic HTML5, Bootstrap 5 grid utilities, and TypeScript for responsive cart manipulation.',
+    'b2222222-2222-2222-2222-222222222222',
+    'shop-the-thao',
+    'ShopTheThao - E-Commerce Platform',
+    'Web thương mại điện tử thể thao xây dựng trên nền PHP 8.2, kiến trúc Custom MVC, MySQL/PDO, Bootstrap 5 và môi trường Docker/Apache.',
+    'Dự án thương mại điện tử chuyên đồ thể thao theo mô hình Custom MVC không phụ thuộc framework. Đảm nhiệm các phân hệ cốt lõi: Voucher/Khuyến mãi, hệ thống gửi email thông báo tự động khi có hàng, tin tức và quản trị bài viết (News/Admin News), cùng thiết lập môi trường Docker/Apache và xử lý lỗi deploy Linux.',
     'Web',
     '/assets/projects/project-web.svg',
-    'https://github.com/doubleD1302/fullstack-ecommerce-platform',
-    'https://demo-ecommerce.example.com',
+    'https://github.com/ducbaotaplaptrinh/ShopTheThao',
+    NULL,
     TRUE,
     2
 ),
 (
-    '33333333-3333-3333-3333-333333333333',
-    'cloud-data-hub',
-    'Cloud Data Hub & Realtime Operational Dashboard',
-    'Cloud-native data operations interface powered by Supabase PostgreSQL, strict TypeScript models, and real-time database change streams.',
-    'A modern cloud database dashboard connected to Supabase PostgreSQL. Implements Row Level Security (RLS) policies to govern multi-tenant data access at the database level. Utilizes Supabase Realtime WebSocket subscriptions for immediate UI synchronization upon record mutations without polling, accompanied by strongly typed TypeScript schema contracts.',
-    'Database',
-    '/assets/projects/project-supabase.svg',
-    'https://github.com/doubleD1302/cloud-data-hub',
-    'https://cloud-data-hub.example.com',
+    'c3333333-3333-3333-3333-333333333333',
+    'no-coffe',
+    'NoCoffe - POS Quán Cà Phê',
+    'Hệ thống POS bán hàng quán cà phê: giao diện SPA mượt mà, quản lý kho nguyên liệu, hao hụt và hỗ trợ thao tác offline với IndexedDB/LocalStorage.',
+    'Phần mềm quản lý bán hàng và vận hành quán cà phê hiện đại. Dự án đảm nhiệm vai trò Project Lead: thiết kế Single Page Application (SPA) tốc độ cao, backend REST API bằng Node.js và Express.js, cơ sở dữ liệu MongoDB/Mongoose cùng cơ chế lưu trữ IndexedDB/LocalStorage giúp duy trì luồng thao tác cốt lõi khi mất kết nối mạng.',
+    'Web',
+    '/assets/projects/project-tidb.svg',
+    'https://github.com/doubleD1302/NoCoffe',
+    NULL,
     TRUE,
     3
-),
-(
-    '44444444-4444-4444-4444-444444444444',
-    'distributed-sql-analytics',
-    'TiDB Cloud Distributed SQL Analytical Engine',
-    'Scalable distributed SQL exploration analyzing partitioned telemetry datasets on TiDB Cloud with MySQL protocol compatibility.',
-    'An analytical project evaluating horizontal scalability and HTAP (Hybrid Transactional/Analytical Processing) using TiDB Cloud. Benchmarks distributed SQL query performance across sharded tables, leveraging TiKV storage engines, distributed JOIN algorithms, and cloud connection pooling.',
-    'Database',
-    '/assets/projects/project-tidb.svg',
-    'https://github.com/doubleD1302/distributed-sql-analytics',
-    NULL,
-    FALSE,
-    4
-),
-(
-    '55555555-5555-5555-5555-555555555555',
-    'realtime-collaboration-workspace',
-    'Real-time Collaborative Workspace & Sync Engine',
-    'Cloud-connected interactive web application leveraging Firebase NoSQL Firestore and authentication for instant bi-directional collaboration.',
-    'An interactive real-time canvas and task sync application built with JavaScript and Firebase. Leverages Firestore snapshot listeners for zero-latency client state synchronization, offline cache persistence, and Firebase Authentication with security rules ensuring strict document-level authorization.',
-    'Web',
-    '/assets/projects/project-firebase.svg',
-    'https://github.com/doubleD1302/realtime-collaboration-workspace',
-    'https://collab-workspace.example.com',
-    FALSE,
-    5
-),
-(
-    '66666666-6666-6666-6666-666666666666',
-    'high-throughput-data-service',
-    'High-Throughput Enterprise Batch Processor & Service',
-    'Robust enterprise backend service built with Java and SQL, utilizing multi-threaded worker pools and optimized JDBC batching.',
-    'A core backend processing engine developed in Java, engineered for high-throughput batch ETL workflows. Features connection pooling (HikariCP), JDBC batch updates (`executeBatch`), thread-safe worker pools (`ExecutorService`), and defensive exception management with rollback guarantees.',
-    'Backend',
-    '/assets/projects/project-java.svg',
-    'https://github.com/doubleD1302/high-throughput-data-service',
-    NULL,
-    FALSE,
-    6
 )
 ON CONFLICT (id) DO UPDATE SET
     title = EXCLUDED.title,
     description = EXCLUDED.description,
     long_description = EXCLUDED.long_description,
-    category = EXCLUDED.category;
+    category = EXCLUDED.category,
+    github_url = EXCLUDED.github_url;
 
--- map project voi technology
+-- 3. Map project technologies
 INSERT INTO public.project_technologies (project_id, technology_id) VALUES
-    ('11111111-1111-1111-1111-111111111111', 'csharp'),
-    ('11111111-1111-1111-1111-111111111111', 'winforms'),
-    ('11111111-1111-1111-1111-111111111111', 'adonet'),
-    ('11111111-1111-1111-1111-111111111111', 'sqlserver'),
-    ('11111111-1111-1111-1111-111111111111', 'sql'),
-    
-    ('22222222-2222-2222-2222-222222222222', 'php'),
-    ('22222222-2222-2222-2222-222222222222', 'mysql'),
-    ('22222222-2222-2222-2222-222222222222', 'html5'),
-    ('22222222-2222-2222-2222-222222222222', 'css3'),
-    ('22222222-2222-2222-2222-222222222222', 'bootstrap'),
-    ('22222222-2222-2222-2222-222222222222', 'typescript'),
-    ('22222222-2222-2222-2222-222222222222', 'sql'),
+    ('a1111111-1111-1111-1111-111111111111', 'react'),
+    ('a1111111-1111-1111-1111-111111111111', 'typescript'),
+    ('a1111111-1111-1111-1111-111111111111', 'tailwind'),
+    ('a1111111-1111-1111-1111-111111111111', 'supabase'),
 
-    ('33333333-3333-3333-3333-333333333333', 'typescript'),
-    ('33333333-3333-3333-3333-333333333333', 'supabase'),
-    ('33333333-3333-3333-3333-333333333333', 'sql'),
-    ('33333333-3333-3333-3333-333333333333', 'html5'),
-    ('33333333-3333-3333-3333-333333333333', 'css3'),
+    ('b2222222-2222-2222-2222-222222222222', 'php'),
+    ('b2222222-2222-2222-2222-222222222222', 'mysql'),
+    ('b2222222-2222-2222-2222-222222222222', 'bootstrap'),
+    ('b2222222-2222-2222-2222-222222222222', 'docker'),
 
-    ('44444444-4444-4444-4444-444444444444', 'tidb'),
-    ('44444444-4444-4444-4444-444444444444', 'sql'),
-    ('44444444-4444-4444-4444-444444444444', 'typescript'),
-
-    ('55555555-5555-5555-5555-555555555555', 'javascript'),
-    ('55555555-5555-5555-5555-555555555555', 'firebase'),
-    ('55555555-5555-5555-5555-555555555555', 'html5'),
-    ('55555555-5555-5555-5555-555555555555', 'css3'),
-
-    ('66666666-6666-6666-6666-666666666666', 'java'),
-    ('66666666-6666-6666-6666-666666666666', 'sql')
+    ('c3333333-3333-3333-3333-333333333333', 'javascript'),
+    ('c3333333-3333-3333-3333-333333333333', 'nodejs'),
+    ('c3333333-3333-3333-3333-333333333333', 'express'),
+    ('c3333333-3333-3333-3333-333333333333', 'mongodb')
 ON CONFLICT DO NOTHING;

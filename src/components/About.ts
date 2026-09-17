@@ -15,7 +15,7 @@ export class About {
           <div class="about-visual-card">
             <div class="about-avatar-wrapper" style="overflow: hidden; padding: 0;">
               ${dev.avatarUrl ? `
-                <img src="${dev.avatarUrl}" alt="${dev.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" />
+                <img src="${dev.avatarUrl}" alt="${dev.name}" style="width: 100%; height: 100%; object-fit: cover; object-position: 38% 15%; border-radius: 50%;" />
               ` : `
                 <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                   <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
@@ -31,24 +31,28 @@ export class About {
               ${dev.headline}
             </p>
             <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
-              <span class="badge" style="background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 4px; font-size: 0.78rem; font-family: var(--font-mono);">C# / .NET</span>
-              <span class="badge" style="background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 4px; font-size: 0.78rem; font-family: var(--font-mono);">SQL Server</span>
+              <span class="badge" style="background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 4px; font-size: 0.78rem; font-family: var(--font-mono);">React</span>
               <span class="badge" style="background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 4px; font-size: 0.78rem; font-family: var(--font-mono);">TypeScript</span>
-              <span class="badge" style="background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 4px; font-size: 0.78rem; font-family: var(--font-mono);">Supabase</span>
+              <span class="badge" style="background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 4px; font-size: 0.78rem; font-family: var(--font-mono);">PHP / MySQL</span>
+              <span class="badge" style="background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 4px; font-size: 0.78rem; font-family: var(--font-mono);">Node.js / Mongo</span>
             </div>
           </div>
 
           <div class="about-content">
-            <div class="section-badge">Engineering Background</div>
+            <div class="section-badge">Full-stack Developer Intern</div>
             <h2 class="section-title">About Me</h2>
             
-            <p style="font-size: 1.12rem; color: var(--color-text-primary); margin-bottom: 1rem; line-height: 1.7;">
-              ${dev.bio}
+            <p style="font-size: 1.08rem; color: var(--color-text-primary); margin-bottom: 1rem; line-height: 1.7;">
+              I’m a Software Engineering student focused on Full-stack Development, with hands-on experience building practical web applications, POS systems, and database-driven software.
             </p>
 
-            <div id="extended-bio-block" style="display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 1.5rem;">
-              ${dev.extendedBio.map(para => `<p>${para}</p>`).join('')}
-            </div>
+            <p style="font-size: 1.05rem; color: var(--color-text-secondary); margin-bottom: 1rem; line-height: 1.7;">
+              I enjoy turning real-world problems into working products — from designing user interfaces and business logic to structuring databases and deploying applications.
+            </p>
+
+            <p style="font-size: 1.05rem; color: var(--color-text-secondary); margin-bottom: 1.75rem; line-height: 1.7;">
+              Through projects using React, TypeScript, PHP, Node.js, Supabase, MySQL, and MongoDB, I’ve developed a strong interest in building software that is reliable, maintainable, and useful in practice.
+            </p>
 
             <div class="about-pillar-cards">
               ${pillars.map(p => `
@@ -68,7 +72,7 @@ export class About {
                   <polyline points="12 5 19 12 12 19"></polyline>
                 </svg>
               </a>
-              <a href="${dev.resumeUrl}" download="CV_Nguyen_Duc_Dat_Software_Developer.pdf" class="btn btn-outline">
+              <a href="${dev.resumeUrl}" download="CV_Nguyen_Duc_Dat.pdf" class="btn btn-outline">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                   <polyline points="7 10 12 15 17 10"></polyline>

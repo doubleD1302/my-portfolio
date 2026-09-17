@@ -4,49 +4,48 @@ export const portfolioConfig: PortfolioConfig = {
   developer: {
     name: "Nguyễn Đức Đạt",
     titles: [
-      "Software Developer",
-      "Full-stack Developer",
-      "Backend Developer",
-      "Database Enthusiast"
+      "Full-stack Developer Intern",
+      "Software Engineering Intern",
+      "Backend Developer Intern",
+      "Web Developer Intern"
     ],
-    headline: "Software Developer",
-    subheadline: "I build reliable software, scalable databases and user-focused applications.",
-    bio: "I’m a software developer interested in building practical applications, working with databases and turning ideas into reliable software products.",
+    headline: "Full-stack Developer Intern",
+    subheadline: "Software Engineering student passionate about building practical web applications, POS systems, and database-driven software.",
+    bio: "I’m a Software Engineering student focused on Full-stack Development, with hands-on experience building practical web applications, POS systems, and database-driven software.",
     extendedBio: [
-      "I have hands-on experience building end-to-end software solutions spanning from multi-tier desktop applications to modern cloud-connected web architectures.",
-      "My approach balances practical software engineering principles with deep respect for database correctness: clean data access layers (ADO.NET, PDO, Supabase REST), normalized schemas, and structured error boundaries.",
-      "Whether developing Windows desktop utilities in C# WinForms, building performant web APIs in PHP/TypeScript, or processing data pipelines in Java and C++, I prioritize maintainability, reliability, and engineering rigor."
+      "I enjoy turning real-world problems into working products — from designing user interfaces and business logic to structuring databases and deploying applications.",
+      "Through projects using React, TypeScript, PHP, Node.js, Supabase, MySQL, and MongoDB, I’ve developed a strong interest in building software that is reliable, maintainable, and useful in practice."
     ],
-    email: "contact@nguyenducdat.dev",
+    email: "channelpha2005@gmail.com",
     github: "https://github.com/doubleD1302",
     linkedin: "https://linkedin.com/in/nguyenducdat",
-    location: "Vietnam / Open to Remote & On-site",
-    resumeUrl: "/cv.pdf",
+    location: "Vietnam / Open to Intern & Junior Roles",
+    resumeUrl: "/CV_Nguyen_Duc_Dat.pdf",
     avatarUrl: "/images/avatar.jpg"
   },
   metrics: {
-    projectsBuilt: "6+",
-    technologiesCount: "15+",
-    databasesCount: "5",
+    projectsBuilt: "3",
+    technologiesCount: "12+",
+    databasesCount: "4",
     coreFocus: "Full-stack Development"
   },
   pillars: [
     {
       number: "01",
-      title: "Software Development",
-      description: "Building robust, layered systems with clean separation between UI presentation, business rules, and data access layers.",
+      title: "Full-stack Development",
+      description: "Building applications across frontend, backend, business logic, and data layers.",
       icon: "code"
     },
     {
       number: "02",
       title: "Database Design",
-      description: "Architecting normalized schemas, writing indexed relational queries, stored procedures, and ensuring ACID transaction safety.",
+      description: "Designing structured data models and integrating relational and NoSQL databases into real applications.",
       icon: "database"
     },
     {
       number: "03",
       title: "Problem Solving",
-      description: "Deconstructing real-world business requirements into modular, testable components with reliable execution guarantees.",
+      description: "Turning real business requirements into practical, maintainable software solutions.",
       icon: "cpu"
     }
   ],

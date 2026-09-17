@@ -24,7 +24,7 @@ export class StatsBar {
             <div class="stat-label">Databases</div>
           </div>
           <div class="stat-card">
-            <div class="stat-value" style="font-size: 1.5rem; display: flex; align-items: center; justify-content: center; height: 2.25rem;">
+            <div class="stat-value stat-value-focus">
               ${metrics.coreFocus}
             </div>
             <div class="stat-label">Primary Focus</div>

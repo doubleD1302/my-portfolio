@@ -11,13 +11,13 @@ export interface ProjectFilterOptions {
 export class ProjectService {
   // lay danh sach projects (uu tien supabase, loi thi dung local)
   public static async getProjects(options: ProjectFilterOptions = {}): Promise<Project[]> {
-    let list: Project[] = [];
+    let list: Project[] = [...projectsData];
 
     if (isSupabaseConfigured()) {
       const client = getSupabaseClient();
       if (client) {
         try {
-          let query = client.from('projects').select(`
+          const { data, error } = await client.from('projects').select(`
             id,
             slug,
             title,
@@ -31,39 +31,30 @@ export class ProjectService {
             display_order
           `).order('display_order', { ascending: true });
 
-          const { data, error } = await query;
-
           if (!error && data && data.length > 0) {
-            // Map Supabase rows and merge with local case studies & architectures
-            list = data.map(row => {
-              const localMatch = projectsData.find(p => p.slug === row.slug || p.id === row.id);
-              return {
-                id: row.id,
-                slug: row.slug,
-                title: row.title,
-                description: row.description,
-                longDescription: row.long_description || localMatch?.longDescription,
-                category: row.category as Project['category'],
-                technologies: localMatch ? localMatch.technologies : [],
-                thumbnail: row.thumbnail || localMatch?.thumbnail,
-                githubUrl: row.github_url || localMatch?.githubUrl,
-                demoUrl: row.demo_url || localMatch?.demoUrl,
-                featured: Boolean(row.featured),
-                architecture: localMatch?.architecture,
-                caseStudy: localMatch?.caseStudy
-              };
-            });
-          } else {
-            list = [...projectsData];
+            // Only merge if Supabase data actually matches our current real projects
+            const hasRealProjectMatch = data.some(row => projectsData.some(p => p.slug === row.slug || p.id === row.id));
+            if (hasRealProjectMatch) {
+              list = data
+                .filter(row => projectsData.some(p => p.slug === row.slug || p.id === row.id))
+                .map(row => {
+                  const localMatch = projectsData.find(p => p.slug === row.slug || p.id === row.id)!;
+                  return {
+                    ...localMatch,
+                    id: row.id || localMatch.id,
+                    title: row.title || localMatch.title,
+                    description: row.description || localMatch.description,
+                    longDescription: row.long_description || localMatch.longDescription,
+                    githubUrl: row.github_url || localMatch.githubUrl,
+                    demoUrl: row.demo_url || localMatch.demoUrl
+                  };
+                });
+            }
           }
         } catch {
           list = [...projectsData];
         }
-      } else {
-        list = [...projectsData];
       }
-    } else {
-      list = [...projectsData];
     }
 
     // loc theo category, tech hoac search
@@ -75,8 +66,21 @@ export class ProjectService {
     return projects.filter(project => {
       // loc theo category
       if (options.category && options.category !== 'All') {
-        if (project.category.toLowerCase() !== options.category.toLowerCase()) {
-          return false;
+        const cat = options.category.toLowerCase();
+        if (cat === 'web') {
+          if (project.category.toLowerCase() !== 'web') return false;
+        } else if (cat === 'backend') {
+          const hasBackend = project.category.toLowerCase() === 'backend' ||
+            project.technologies.some(t => ['backend', 'php', 'nodejs', 'express', 'docker'].includes(t.category) || ['php', 'nodejs', 'express', 'docker'].includes(t.id));
+          if (!hasBackend) return false;
+        } else if (cat === 'database') {
+          const hasDb = project.category.toLowerCase() === 'database' ||
+            project.technologies.some(t => ['databases', 'supabase', 'mysql', 'mongodb', 'sql'].includes(t.category) || ['supabase', 'mysql', 'mongodb', 'sql'].includes(t.id));
+          if (!hasDb) return false;
+        } else if (cat === 'desktop') {
+          if (project.category.toLowerCase() !== 'desktop') return false;
+        } else {
+          if (project.category.toLowerCase() !== cat) return false;
         }
       }
 

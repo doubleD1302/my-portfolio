@@ -15,16 +15,22 @@ export class ProjectCard {
     card.innerHTML = `
       <div class="project-thumbnail-wrapper">
         <span class="project-category-badge">${project.category}</span>
-        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; color: var(--color-primary);">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; color: var(--color-primary); padding: 1rem; text-align: center;">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             ${this.getCategoryIcon(project.category)}
           </svg>
-          <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--color-text-muted);">${project.slug}</span>
+          <span style="font-family: var(--font-mono); font-size: 0.82rem; font-weight: 600; color: var(--color-text-secondary); background: rgba(var(--color-primary-rgb), 0.1); padding: 2px 10px; border-radius: 999px;">
+            ${project.githubUrl ? project.githubUrl.replace('https://github.com/', '') : project.slug}
+          </span>
         </div>
       </div>
 
       <div class="project-body">
-        <h3 class="project-title">${project.title}</h3>
+        <h3 class="project-title">
+          <a href="${project.githubUrl || '#'}" target="_blank" rel="noopener noreferrer" class="project-title-link" style="color: inherit; text-decoration: none;">
+            ${project.title}
+          </a>
+        </h3>
         <p class="project-desc">${project.description}</p>
         
         <div class="project-tech-tags">
@@ -32,39 +38,43 @@ export class ProjectCard {
         </div>
 
         <div class="project-actions">
-          <button class="btn btn-outline btn-sm btn-view-case-study" type="button">
-            <span>View Case Study</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
+          ${project.githubUrl ? `
+            <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm btn-project-github" aria-label="Open GitHub Repository">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+              <span>GitHub Repo</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          ` : ''}
+
+          <button class="btn btn-outline btn-sm btn-view-case-study" type="button" aria-label="View Project Case Study">
+            <span>Case Study</span>
           </button>
-
-          <div class="project-links">
-            ${project.githubUrl ? `
-              <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-icon btn-ghost btn-sm" aria-label="GitHub Repository" title="GitHub Repository">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                </svg>
-              </a>
-            ` : ''}
-
-            ${project.demoUrl ? `
-              <a href="${project.demoUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-icon btn-ghost btn-sm" aria-label="Live Demo" title="Live Demo">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                  <polyline points="15 3 21 3 21 9"></polyline>
-                  <line x1="10" y1="14" x2="21" y2="3"></line>
-                </svg>
-              </a>
-            ` : ''}
-          </div>
         </div>
       </div>
     `;
 
+    // Make entire card navigate to GitHub repo when clicked
+    if (project.githubUrl) {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        if (target.closest('.btn-view-case-study') || target.closest('a')) {
+          return;
+        }
+        window.open(project.githubUrl, '_blank', 'noopener,noreferrer');
+      });
+    }
+
     // Hook Case study click
-    const btn = card.querySelector<HTMLButtonElement>('.btn-view-case-study');
-    btn?.addEventListener('click', () => {
+    const caseStudyBtn = card.querySelector<HTMLButtonElement>('.btn-view-case-study');
+    caseStudyBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
       onViewCaseStudy(project);
     });
 

@@ -12,16 +12,12 @@ export class Hero {
 
     const rawCode = `const developer = {
   name: "${dev.name}",
-  languages: [
-    "C#", "Java", "C++",
-    "TypeScript", "PHP", "SQL"
-  ],
-  databases: [
-    "SQL Server", "MySQL", 
-    "TiDB Cloud", "Supabase"
-  ],
-  architecture: "Layered & Relational",
-  passion: "Building useful software"
+  role: "Full-stack Developer Intern",
+  education: "Software Engineering (2027)",
+  frontend: ["React", "TypeScript", "Tailwind CSS"],
+  backend: ["PHP", "Node.js", "Express.js"],
+  databases: ["PostgreSQL / Supabase", "MySQL", "MongoDB"],
+  passion: "Turning real problems into practical products"
 };`;
 
     const highlightedCode = highlightCode(rawCode, 'typescript');
@@ -32,7 +28,7 @@ export class Hero {
           <div class="hero-content">
             <div class="hero-small-badge">
               <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-success); display: inline-block;"></span>
-              Available for Software Engineering Roles
+              Available for Full-stack Developer Intern Roles
             </div>
             
             <p style="font-size: 1.1rem; color: var(--color-text-secondary); margin-bottom: 0.25rem;">Hello, I'm</p>
@@ -56,7 +52,7 @@ export class Hero {
                 </svg>
               </a>
 
-              <a href="${dev.resumeUrl}" download="CV_Nguyen_Duc_Dat_Software_Developer.pdf" class="btn btn-outline" id="hero-cta-cv">
+              <a href="${dev.resumeUrl}" download="CV_Nguyen_Duc_Dat.pdf" class="btn btn-outline" id="hero-cta-cv">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                   <polyline points="7 10 12 15 17 10"></polyline>
